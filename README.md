@@ -1,6 +1,6 @@
-# GenericAPI
+# StarterAPI
 
-Welcome to the APIStarterProj! This API allows you to manage a collection of items, including creating, reading, updating, and deleting item records. The API is built with ASP.NET Core 8.0 and includes features such as rate limiting, CORS configuration, API key validation, logging with Serilog, response caching, response compression, AutoMapper and more.
+Welcome to the StarterAPI! This API allows you to manage a collection of items, including creating, reading, updating, and deleting item records. The API is built with ASP.NET Core 8.0 and includes features such as rate limiting, CORS configuration, API key validation, logging with Serilog, response caching, response compression, AutoMapper and more.
 
 `This is currently set up with EntityFrameworkCore installed.`
 
