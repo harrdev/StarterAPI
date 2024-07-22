@@ -191,10 +191,10 @@ Modern clients automatically include the Accept-Encoding header, indicating supp
 Here are some of the key endpoints available in the APIStarterProj:
 
 - `GET /api/student` - Retrieves a list of all students.
-- `GET /api/student/{id}` - Retrieves a specific student by ID.
+- `GET /api/student/{id}` - Retrieves an existing student by ID.
 - `POST /api/student` - Creates a new student.
 - `PUT /api/student/{id}` - Updates an existing student by ID.
-- `DELETE /api/student/{id}` - Deletes an student by ID.
+- `DELETE /api/student/{id}` - Deletes an existing student by ID.
 
 For a full list of endpoints and to test them interactively, use the Swagger UI available in development mode at `localhost:<port>/swagger`.
 
