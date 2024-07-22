@@ -218,7 +218,7 @@ To test the endpoints that require an API key, use the Authorize button in the S
 
 1. Open the Swagger UI in your browser.
 2. Click the `Authorize` button at the top right corner of the page.
-3. In the popup modal, enter your API key in the `Value` field with the prefix `X-API-KEY` (e.g., `X-API-KEY: a1b2c3`).
+3. In the popup modal, enter your API key in the `Value` (e.g. `a1b2c3`).
 4. Click the `Authorize` button in the modal to apply the API key to all requests.
 5. Close the modal.
 
