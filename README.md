@@ -188,7 +188,7 @@ Modern clients automatically include the Accept-Encoding header, indicating supp
 
 ## Endpoints
 
-Here are some of the key endpoints available in the APIStarterProj:
+Here are some of the key endpoints available in the StarterAPI:
 
 - `GET /api/student` - Retrieves a list of all students.
 - `GET /api/student/{id}` - Retrieves an existing student by ID.
@@ -201,7 +201,7 @@ For a full list of endpoints and to test them interactively, use the Swagger UI 
 ## Swagger
 ### Using Swagger
 
-Swagger is available in the development environment for testing the API endpoints. It is configured in Program.cs file, using Configurations/SwaggerConfiguration.cs file..
+Swagger is available in the development environment for testing the API endpoints. It is configured in Program.cs file, using Configurations/SwaggerConfiguration.cs file.
 
 ### Accessing Swagger
 
