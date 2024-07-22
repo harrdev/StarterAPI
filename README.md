@@ -62,6 +62,7 @@ builder.Services.AddCors(options =>
 
 Logging is configured using Serilog. The log file path and other settings can be updated in the `Program.cs` file. By default, logs are written to the `Logs` directory with daily rolling files. Currently setup to create a new log file every day for 7 days, removing the first one every day after 7:
 ```
+`In Program.cs`
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .WriteTo.File("Logs/log.txt", rollingInterval: RollingInterval.Day, retainedFileCountLimit: 7)
