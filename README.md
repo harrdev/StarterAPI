@@ -24,8 +24,8 @@ Welcome to the StarterAPI! This API allows you to manage a collection of items, 
 To get started with the APIStarterProj, clone the repository and navigate to the project directory:
 
 1. Create DB in SSMS for migrations/update to run in.
-2. Add connection string to appsettings.json file.
-3. Add ApiKey value in appsettings.json file.
+2. Add connection string to appsettings.json file.  [Database Connection String](#database-connection-string)
+3. Add ApiKey value in appsettings.json file.  [API Key](#api-key)
 4  Create migrations.  Update database.
 5. Build and run project to test with Swagger (append "/swagger" to end of window url when project starts in browser).
 6. Controllers currently have APIKEY validation.  In Swagger, click on "Authorize" and enter ApiKey value that you set in appsettings.json file.
