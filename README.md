@@ -116,15 +116,15 @@ Example:
 ```
 Ensure you set this key and use it in the request headers as `X-API-KEY`.
 
-## Response Caching
+### Response Caching
 
 Response caching is used to improve the performance of the API by storing the results of requests and reusing them for subsequent requests. This reduces the load on the server and decreases the response time for clients.
 
-### What is Response Caching Doing?
+#### What is Response Caching Doing?
 
 The response caching setup in the project is configured to cache responses for a specified duration. When a request is made to the API, the response is stored in a cache. If the same request is made again within the caching duration, the cached response is returned instead of processing the request again. This can significantly improve the performance and scalability of the API.  'Note: If the results from the GET calls are updated frequenty, consider removing the cache or reducing the time on it'.
 
-### Where is Response Caching Configured?
+#### Where is Response Caching Configured?
 
 Response caching is configured in the `Program.cs` file. Here is the relevant configuration:
 
@@ -146,7 +146,7 @@ Here are the parameters you can use with the [ResponseCache] attribute:
 - `Location`: Specifies where the data from a particular URL must be cached. Possible values are `Any`, `Client`, and `None`.
 - `VaryByQueryKeys`: Specifies the query string parameters to vary the cache. This means that different cached responses are stored based on the query string values.
 
-### Example
+#### Example
 Here is an example of how to use the [ResponseCache] attribute on your routes:
 ```
 [HttpGet]
@@ -164,11 +164,11 @@ public async Task<ActionResult<Student>> GetStudent(int id)
 }
 ```
 
-## Response Compression
+### Response Compression
 
 Response compression reduces the size of the responses sent from your API, decreasing bandwidth usage and improving load times for clients.
 
-### Configuration in `Program.cs`
+#### Configuration in `Program.cs`
 
 Response compression is configured in the `Program.cs` file:
 
@@ -179,10 +179,10 @@ app.UseResponseCompression();
 - `builder.Services.AddResponseCompression()`: Adds response compression services.
 - `app.UseResponseCompression()`: Enables response compression middleware.
 
-### What is Response Compression doing?
+#### What is Response Compression doing?
 When enabled, the server compresses the response data using algorithms like Gzip or Brotli before sending it to the client. Most modern clients (browsers and HTTP clients) automatically handle compressed responses, so no special client-side handling is needed.
 
-### Client-Side Handling
+#### Client-Side Handling
 Modern clients automatically include the Accept-Encoding header, indicating supported compression algorithms. They decompress responses as needed.
 
 
@@ -224,7 +224,7 @@ To test the endpoints that require an API key, use the Authorize button in the S
 
 Now, all requests made through the Swagger UI will include the API key in the headers.
 
-### Testing Endpoints
+## Testing Endpoints
 
 You can test the endpoints directly in the Swagger UI:
 
