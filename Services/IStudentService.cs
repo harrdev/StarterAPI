@@ -9,5 +9,6 @@ namespace StarterAPI.Services
         Task<bool> UpdateStudent(StudentDTO studentDTO);
         Task<bool> DeleteStudent(int id);
         Task<StudentDTO> AddStudent(StudentDTO studentDTO);
+        Task<IEnumerable<CourseDTO>> GetCoursesForStudent(int id);
     }
 }

@@ -13,6 +13,14 @@ namespace StarterAPI.Repositories
             _context = context;
             _mapper = mapper;
         }
+
+        public async Task<IEnumerable<Course>> GetCoursesForStudent(StudentDTO studentDTO)
+        {
+            var courses = await _context.Courses
+                .Where(c => studentDTO.CourseIds.Contains(c.CourseId)).ToListAsync();
+            return courses;
+        }
+
         public async Task<Student> CreateStudent(StudentDTO studentDTO)
         {
             var student = _mapper.Map<Student>(studentDTO);

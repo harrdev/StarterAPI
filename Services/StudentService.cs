@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using StarterAPI.Models.Entities;
 using StarterAPI.Repositories;
 
 namespace StarterAPI.Services
@@ -11,6 +12,15 @@ namespace StarterAPI.Services
         {
             _studentRepository = studentRepository;
             _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<CourseDTO>> GetCoursesForStudent(int id)
+        {
+            var student = await _studentRepository.GetStudent(id);
+            var studentDTO = _mapper.Map<StudentDTO>(student);
+            var courses = await _studentRepository.GetCoursesForStudent(studentDTO);
+            var courseDTOs = _mapper.Map<IEnumerable<CourseDTO>>(courses);
+            return courseDTOs;
         }
 
         public async Task<StudentDTO> AddStudent(StudentDTO studentDTO)

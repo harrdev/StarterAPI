@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using StarterAPI.Attributes;
+using StarterAPI.Models.Entities;
 using StarterAPI.Services;
 
 namespace StarterAPI.Controllers
@@ -24,6 +25,26 @@ namespace StarterAPI.Controllers
             _logger = logger;
             _mapper = mapper;
             _context = context;
+        }
+
+        [HttpGet("{id}/courses")]
+        public async Task<ActionResult<IEnumerable<CourseDTO>>> GetCoursesByStudent(int id)
+        {
+            try
+            {
+                var student = await _studentService.GetStudentById(id);
+                if (student == null)
+                {
+                    return NotFound();
+                }
+                var courses = await _studentService.GetCoursesForStudent(id);
+                return Ok(courses);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error getting courses for student {id}.");
+                return StatusCode(500, "An error occurred getting courses for that student.");
+            }
         }
 
         [HttpGet]
