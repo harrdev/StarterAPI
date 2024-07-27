@@ -32,9 +32,11 @@ namespace StarterAPI.Controllers
         {
             try
             {
+                _logger.LogInformation($"Fetching courses for student {id}.");
                 var student = await _studentService.GetStudentById(id);
                 if (student == null)
                 {
+                    _logger.LogInformation($"Student {id} not found.");
                     return NotFound();
                 }
                 var courses = await _studentService.GetCoursesForStudent(id);
