@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using StarterAPI.Attributes;
-using StarterAPI.Models.Entities;
 using StarterAPI.Services;
 
 namespace StarterAPI.Controllers
@@ -13,18 +11,12 @@ namespace StarterAPI.Controllers
     {
         private readonly IStudentService _studentService;
         private readonly ILogger<StudentController> _logger;
-        private readonly IMapper _mapper;
-        private readonly DataContext _context;
         public StudentController
             (IStudentService studentService,
-            ILogger<StudentController> logger,
-            IMapper mapper,
-            DataContext context)
+            ILogger<StudentController> logger)
         {
             _studentService = studentService;
             _logger = logger;
-            _mapper = mapper;
-            _context = context;
         }
 
         [HttpGet("{id}/courses")]
@@ -37,7 +29,7 @@ namespace StarterAPI.Controllers
                 if (student == null)
                 {
                     _logger.LogInformation($"Student {id} not found.");
-                    return NotFound();
+                    return NotFound(new { Message = $"No student found with ID {id}." });
                 }
                 var courses = await _studentService.GetCoursesForStudent(id);
                 return Ok(courses);
@@ -56,8 +48,7 @@ namespace StarterAPI.Controllers
             try
             {
                 _logger.LogInformation("Fetching all students");
-                var students = await _studentService.GetAllStudents();
-                var studentDTOs = _mapper.Map<IEnumerable<StudentDTO>>(students);
+                var studentDTOs = await _studentService.GetAllStudents();
                 return Ok(studentDTOs);
             }
             catch (Exception ex)
@@ -105,7 +96,7 @@ namespace StarterAPI.Controllers
                 if (student == null)
                 {
                     _logger.LogInformation($"Student {id} requested and does not exist");
-                    return NotFound();
+                    return NotFound(new { Message = $"No student found with ID {id}." });
                 }
                 return Ok(student);
             }
@@ -125,8 +116,8 @@ namespace StarterAPI.Controllers
                 var success = await _studentService.DeleteStudent(id);
                 if (!success)
                 {
-                    _logger.LogInformation($"Student {id} not deleted, does not exist.");
-                    return NotFound();
+                    _logger.LogInformation($"Student {id} does not exist.");
+                    return NotFound(new { Message = $"No student found with ID {id}." });
                 }
                 return NoContent();
             }

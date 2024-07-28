@@ -45,7 +45,7 @@ namespace StarterAPI.Controllers
                 if (courseDTO == null)
                 {
                     _logger.LogInformation($"Course {id} request and does not exist.");
-                    return NotFound();
+                    return NotFound(new { Message = $"No course found with ID {id}." });
                 }
                 return Ok(courseDTO);
             }

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using StarterAPI.Models.Entities;
 using StarterAPI.Repositories;
 
 namespace StarterAPI.Services

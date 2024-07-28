@@ -64,6 +64,7 @@ namespace StarterAPI.Repositories
 
             _mapper.Map(studentDTO, student);
 
+            // Clear out associated courses with student entity
             student.Courses.Clear();
 
             // Add the courses from the DTO
